@@ -70,6 +70,12 @@ To get a local copy of this project up and running, follow these steps:
 The app will be running on `http://localhost:3000`.
 
 
+## Live Demo
+
+You can view the live version of the project here:  
+[Visit the live site](https://apnicoaching.netlify.app/)
+
+
 ## File Structure
 
 ```plaintext
@@ -78,7 +84,7 @@ Apni-Coaching/
 ├── frontend/
 │   ├── Build                 # Compiled and bundled frontend code (e.g., minified JavaScript, CSS)
 │   ├── public/               # Static assets and HTML files served directly by the web server
-│   ├── src/                  # Source code for the frontend (React components, hooks, context,data, pages,reducers,slice,Util,etc.)
+│   ├── src/                  # Source code for the frontend (React components, hooks, context,data, pages,reducers, slice, Util, connection to backend apis, etc.)
 │   ├── .env                  # Environment variables for the frontend (e.g., API keys, URLs) 
 │   ├── .gitignore            # Files and directories to be ignored by Git (e.g., node_modules, build output.
 │   ├── package.json          # Frontend package dependencies and scripts (e.g., npm start, npm test)
@@ -101,3 +107,5 @@ Apni-Coaching/
 │   ├── .gitignore                  # Files and directories to be ignored by Git (e.g., node_modules, logs)
 │
 ├── README.md                       # Project documentation
+
+
