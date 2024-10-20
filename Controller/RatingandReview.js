@@ -3,6 +3,7 @@ const Course = require("../Model/Course");
 const mongoose = require("mongoose");
 const User = require("../Model/User")
 
+
 exports.createRating = async (req, res) => {
   try {
     // console.log("fetching details....")

@@ -25,7 +25,7 @@ exports.resetPasswordToken = async (req, res) => {
     // console.log("DETAILS", updatedDetails)
 
     // const url = `http://localhost:3000/update-password/${token}`
-    const url = `https://apnicoaching-edtech-project.vercel.app/update-password/${token}`
+    const url = `https://apnicoaching-2.onrender.com/update-password/${token}`
 
     await mailSender(
       email,
@@ -42,7 +42,7 @@ exports.resetPasswordToken = async (req, res) => {
     return res.json({
       error: error.message,
       success: false,
-      message: `Some Error in Sending the Reset Message`,
+      message: `Some Error in Sending the Reset Password Message`,
     })
   }
 }

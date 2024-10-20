@@ -12,13 +12,11 @@ const userSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-
     email: {
       type: String,
       required: true,
       trim: true,
     },
-
     password: {
       type: String,
       required: true,
@@ -57,7 +55,7 @@ const userSchema = new mongoose.Schema(
     ratings: {
     type: Number,
     required: true,
-  },
+    },
     resetPasswordExpires: {
       type: Date,
     },
