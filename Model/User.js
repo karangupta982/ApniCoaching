@@ -54,7 +54,6 @@ const userSchema = new mongoose.Schema(
     },
     ratings: {
     type: Number,
-    required: true,
     },
     resetPasswordExpires: {
       type: Date,

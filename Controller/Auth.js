@@ -60,7 +60,7 @@ exports.signup = async (req, res) => {
 //  useful when you only want the latest entry (in this case, the most recent OTP associated with the
 //  specified email).
 
-    // console.log(response);
+    console.log(response);
     if (!response.length) {
       return res.status(400).json({
         success: false,
@@ -78,6 +78,7 @@ exports.signup = async (req, res) => {
     let approved = "";
     approved === "Instructor" ? (approved = false) : (approved = true);
 
+    console.log("approaved :", approved);
     const profileDetails = await Profile.create({
       gender: null,
       dateOfBirth: null,
