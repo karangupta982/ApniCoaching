@@ -4,6 +4,10 @@ require("dotenv").config();
 const { MONGODB_URL } = process.env;
 
 exports.connect = () => {
+	 if (process.env.NODE_ENV === "test") {
+      // In tests, you'll override mongoose.connect in beforeAll
+      return;
+    }
 	mongoose
 		.connect(MONGODB_URL, {
 			// useNewUrlparser: true,

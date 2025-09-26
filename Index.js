@@ -63,10 +63,22 @@ app.get("/", (req, res) => {
 		message: "Welcome To Apni Coaching",
 	});
 });
+let server;
+// Only start server if this file is run directly
+
+// Every file in Node.js is treated as a module.
+// The module object represents the current file.
+// require.main is a special property that points to the entry point module (the file that Node executed first with node ...).
+// require.main → points to app.js
+// module → also app.js
+// So they are the same (true).
 
 
-app.listen(PORT, () => {
-	console.log(`App is listening at ${PORT}`);
-});
+if (require.main === module) {
+  server = app.listen(PORT, () => {
+    console.log(`App is listening at ${PORT}`);
+  });
+}
 
+module.exports = { app, server };
 

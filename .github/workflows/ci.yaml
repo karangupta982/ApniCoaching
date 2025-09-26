@@ -12,7 +12,7 @@ env:
   DOCKER_TAG: ${{ github.sha }}
 
 jobs:
-  build-and-push:
+  test:
     runs-on: ubuntu-latest
     
     steps:
@@ -28,7 +28,14 @@ jobs:
       run: npm ci
 
     - name: Run tests
-      run: npm test || true
+      run: npm test
+
+  build-and-push:
+    needs: test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
@@ -49,19 +56,3 @@ jobs:
           ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}
         cache-from: type=registry,ref=${{ env.DOCKER_IMAGE }}:buildcache
         cache-to: type=registry,ref=${{ env.DOCKER_IMAGE }}:buildcache,mode=max
-
-  deploy:
-    needs: build-and-push
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v2
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ secrets.AWS_REGION }}
-
-    - name: Update ECS service
-      run: |
-        aws ecs update-service --cluster apni-coaching-cluster --service apni-coaching-service --force-new-deployment
