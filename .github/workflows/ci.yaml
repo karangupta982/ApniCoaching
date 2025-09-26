@@ -8,7 +8,7 @@ on:
 
 env:
   DOCKER_REGISTRY: docker.io
-  DOCKER_IMAGE: ${{ secrets.DOCKER_USERNAME }}/apni-coaching
+  DOCKER_IMAGE: ${{ secrets.DOCKER_USERNAME }}/online-learning
   DOCKER_TAG: ${{ github.sha }}
 
 jobs:
