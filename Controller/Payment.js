@@ -17,21 +17,24 @@ exports.capturePayment = async (req, res) => {
   if (!courses.length) {
     return res.json({ success: false, message: "Please Provide Course ID" });
   }
+
   let total_amount = 0;
+
+  // console.log("calculating price");
   for (const course_id of courses) {
     let course;
     try {
       course = await Course.findById(course_id);
       if (!course) {
         return res
-          .status(200)
-          .json({ success: false, message: "Could not find the Course" });
+        .status(200)
+        .json({ success: false, message: "Could not find the Course" });
       }
       const uid = new mongoose.Types.ObjectId(userId);
       if (course.studentsEnroled.includes(uid)) {
         return res
-          .status(200)
-          .json({ success: false, message: "Student is already Enrolled" });
+        .status(200)
+        .json({ success: false, message: "Student is already Enrolled" });
       }
       total_amount += course.price;
     } catch (error) {
@@ -39,20 +42,23 @@ exports.capturePayment = async (req, res) => {
       return res.status(500).json({ success: false, message: error.message });
     }
   }
+  // console.log("calculated price done");
   const options = {
     amount: total_amount * 100,
     currency: "INR",
     receipt: Math.random(Date.now()).toString(),
   };
+  
   try {
+    // console.log("initiating order");
     const paymentResponse = await instance.orders.create(options);
-    // console.log(paymentResponse);
+    // console.log("instance orders create: ",paymentResponse);``
     res.json({
       success: true,
       data: paymentResponse,
     });
   } catch (error) {
-    // console.log(error);
+    console.log(error);
     res
       .status(500)
       .json({ success: false, message: "Could not initiate order." });
