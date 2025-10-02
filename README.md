@@ -73,8 +73,11 @@ The app will be running on `http://localhost:3000`.
 ## Live Demo
 
 You can view the live version of the project here:  
-[Visit the live site](https://apnicoaching.netlify.app/)
+[Visit the live site](https://online-learning-zeta-dun.vercel.app/)
 
+## Frontend Repo
+
+You can view the frontend Repo here: [frontend repo](https://github.com/karangupta982/online-learning)
 
 ## File Structure
 
