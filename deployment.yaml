@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: online-learning
+  labels:
+    app: online-learning
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: online-learning
+  template:
+    metadata:
+      labels:
+        app: online-learning
+    spec:
+      containers:
+      - name: online-learning-platform
+        image: docker.io/karangupta982/online-learning:latest10
+        ports:
+        - containerPort: 4000
+        envFrom:
+        - configMapRef:
+            name: online-learning-config
+        - secretRef:
+            name: online-learning-secrets
